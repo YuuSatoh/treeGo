@@ -27,7 +27,7 @@ func runTree(dir string, file string) {
 	readedFilesLength := len(readedfiles)
 	for index, rededFile := range readedfiles {
 
-		if strings.HasPrefix(rededFile.Name(), ".") {
+		if isSkipFile(rededFile.Name()) {
 			continue
 		}
 
@@ -40,6 +40,10 @@ func runTree(dir string, file string) {
 		}
 	}
 	hasPaentOtherFiles = deleteSliceLastItem(hasPaentOtherFiles)
+}
+
+func isSkipFile(fileName string) bool {
+	return strings.HasPrefix(fileName, ".")
 }
 
 func isLast(index int, len int) bool {
