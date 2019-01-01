@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-var hasPaentOtherFiles []bool
+var hasParentOtherFile []bool
 
 func main() {
 	dirName, fileName := initInput()
@@ -35,11 +35,11 @@ func runTree(dir string, file string) {
 		printTreeLine(rededFile.Name(), isLastFile)
 
 		if rededFile.IsDir() {
-			hasPaentOtherFiles = append(hasPaentOtherFiles, isLastFile)
+			hasParentOtherFile = append(hasParentOtherFile, isLastFile)
 			runTree(readDirPath+"/", rededFile.Name())
 		}
 	}
-	hasPaentOtherFiles = deleteSliceLastItem(hasPaentOtherFiles)
+	hasParentOtherFile = deleteSliceLastItem(hasParentOtherFile)
 }
 
 func isSkipFile(fileName string) bool {
@@ -51,7 +51,7 @@ func isLast(index int, len int) bool {
 }
 
 func printTreeLine(fileName string, isLast bool) {
-	for _, hasPaentOtherFile := range hasPaentOtherFiles {
+	for _, hasPaentOtherFile := range hasParentOtherFile {
 		if hasPaentOtherFile {
 			fmt.Print("    ")
 		} else {
