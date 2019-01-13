@@ -87,9 +87,12 @@ func initInput() (string, string) {
 	flag.StringVar(&path, "path", "", "print dir path flag")
 	flag.Parse()
 	dir, file = filepath.Split(path)
+	fmt.Println("dir ",dir)
+	fmt.Println("file ",file )
 	if dir == "" {
 		dir, _ = os.Getwd()
+		file = ""
 	}
-	fmt.Println(dir)
+	fmt.Println("dir",dir)
 	return dir, file
 }
