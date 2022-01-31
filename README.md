@@ -2,4 +2,4 @@
 
 ## usage option
 * -path dirName
-    * ex) -path /Users  
+    * ex ) -path /Users  
